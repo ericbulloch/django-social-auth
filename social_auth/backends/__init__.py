@@ -861,7 +861,7 @@ class BaseOAuth2(BaseOAuth):
 
     @classmethod
     def process_refresh_token_response(cls, response):
-        return simplejson.loads(response)
+        return json.loads(response)
 
     @classmethod
     def refresh_token(cls, token):

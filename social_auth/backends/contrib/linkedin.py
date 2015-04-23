@@ -11,7 +11,7 @@ from urllib import urlencode
 from urllib2 import Request
 from oauth2 import Token
 
-from django.utils import simplejson
+import json
 
 from social_auth.utils import setting, dsa_urlopen
 from social_auth.backends import ConsumerBasedOAuth, OAuthBackend, BaseOAuth2
@@ -155,7 +155,7 @@ class LinkedinOAuth2(BaseOAuth2):
         request = Request(url + '?' + urlencode(data))
         add_language_header(request)
         try:
-            return simplejson.loads(dsa_urlopen(request).read())
+            return json.loads(dsa_urlopen(request).read())
         except (ExpatError, KeyError, IndexError):
             return None
 
